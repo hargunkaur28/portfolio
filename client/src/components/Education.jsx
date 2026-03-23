@@ -11,7 +11,7 @@ const education = [
     extra: 'CGPA: 8.26',
   },
   {
-    years: 'May 2021 – Mar 2023',
+    years: 'May 2022 – Mar 2023',
     school: 'M.G.N. Public School',
     location: 'Jalandhar, Punjab',
     field: 'Intermediate — PCM',

@@ -461,10 +461,26 @@ body {
     transform: none !important;
     flex-direction: row !important;
     justify-content: center !important;
+    margin-top: 1rem !important;
+    margin-bottom: 2rem !important;
+    width: 100% !important;
+    gap: 1.5rem !important;
   }
   
   /* Timeline fixes */
   .activities-grid {
     grid-template-columns: 1fr !important;
+  }
+  
+  /* Navbar */
+  .desktop-nav {
+    display: none !important;
+  }
+
+  /* Certifications */
+  .cert-card {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 1.2rem !important;
   }
 }

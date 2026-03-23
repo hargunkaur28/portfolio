@@ -39,24 +39,26 @@ export default function Navbar() {
 
         {/* Nav links */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
-          {navLinks.map(link => (
-            <a
-              key={link.href}
-              href={link.href}
-              style={{
-                fontFamily: 'var(--font-body)',
-                color: 'var(--color-star)',
-                fontSize: '0.9rem',
-                textDecoration: 'none',
-                fontWeight: 500,
-                transition: 'color 0.2s ease',
-              }}
-              onMouseEnter={e => e.target.style.color = 'var(--color-accent)'}
-              onMouseLeave={e => e.target.style.color = 'var(--color-star)'}
-            >
-              {link.label}
-            </a>
-          ))}
+          <div className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
+            {navLinks.map(link => (
+              <a
+                key={link.href}
+                href={link.href}
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  color: 'var(--color-star)',
+                  fontSize: '0.9rem',
+                  textDecoration: 'none',
+                  fontWeight: 500,
+                  transition: 'color 0.2s ease',
+                }}
+                onMouseEnter={e => e.target.style.color = 'var(--color-accent)'}
+                onMouseLeave={e => e.target.style.color = 'var(--color-star)'}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
           <a href="#contact" className="btn-violet" style={{ fontSize: '0.85rem', padding: '0.5em 1.3em' }}>
             Get in touch!
           </a>
