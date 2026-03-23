@@ -70,6 +70,7 @@ export default function Certifications() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem', maxWidth: '820px' }}>
           {certifications.map((cert, i) => (
             <motion.div
+              className="cert-card"
               key={cert.id}
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
