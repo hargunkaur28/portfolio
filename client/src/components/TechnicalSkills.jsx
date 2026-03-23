@@ -42,7 +42,7 @@ export default function TechnicalSkills() {
           <SplitText text="Technical Skills" delay={0.04} />
         </motion.h2>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '3rem', marginBottom: '3rem' }}>
+        <div className="responsive-grid-3" style={{ marginBottom: '3rem' }}>
 
           {/* Languages */}
           <SkillColumn

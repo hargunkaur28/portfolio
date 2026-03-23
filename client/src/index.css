@@ -389,3 +389,82 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ========================================
+   RESPONSIVE UTILITIES
+   ======================================== */
+.responsive-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.responsive-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+/* Tablet & Mobile Grid Adjustments */
+@media (max-width: 992px) {
+  .responsive-grid-3 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .responsive-grid-2,
+  .responsive-grid-3 {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  
+  /* Hero Mobile Adjustments */
+  .hero-container {
+    padding-top: 120px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  
+  .hero-tagline {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    margin: 0 auto 2rem auto !important;
+  }
+  
+  .hero-title-container {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    margin-bottom: 3rem !important;
+  }
+  
+  .hero-title-layer {
+    font-size: clamp(3rem, 15vw, 5rem) !important;
+  }
+  
+  .hero-portrait {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    margin: 0 auto 3rem auto !important;
+  }
+  
+  .hero-socials {
+    position: relative !important;
+    right: auto !important;
+    top: auto !important;
+    transform: none !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+  }
+  
+  /* Timeline fixes */
+  .activities-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

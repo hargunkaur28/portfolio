@@ -90,7 +90,7 @@ export default function Education() {
         </div>
 
         {/* Timeline — horizontal on desktop */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0', position: 'relative' }}>
+        <div className="responsive-grid-3" style={{ gap: '0', position: 'relative' }}>
           <div style={{
             position: 'absolute', top: '16px', left: '16px', right: '16px',
             height: '1px',

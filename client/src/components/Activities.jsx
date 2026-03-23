@@ -31,7 +31,7 @@ const training = {
 export default function Activities() {
   return (
     <section id="activities" className="section-light" style={{ padding: '5rem 2rem 6rem' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '5rem' }}>
+      <div className="responsive-grid-2" style={{ maxWidth: '1200px', margin: '0 auto' }}>
 
         {/* Achievements */}
         <motion.div

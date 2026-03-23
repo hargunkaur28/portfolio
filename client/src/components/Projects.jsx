@@ -93,7 +93,7 @@ export default function Projects() {
           </div>
         </div>
 
-        <motion.div layout style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
+        <motion.div layout className="responsive-grid-3">
           <AnimatePresence mode="popLayout">
             {filtered.map((project, i) => (
               <motion.div

@@ -48,10 +48,11 @@ export default function Hero() {
       }} />
 
       {/* Main hero content */}
-      <div style={{ position: 'relative', zIndex: 1, flex: 1, maxWidth: '1200px', margin: '0 auto', width: '100%', padding: '0 2rem' }}>
+      <div className="hero-container" style={{ position: 'relative', zIndex: 1, flex: 1, maxWidth: '1200px', margin: '0 auto', width: '100%', padding: '0 2rem' }}>
         
         {/* Tagline top-left */}
         <motion.p
+          className="hero-tagline"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 1.8, duration: 0.7 }}
@@ -70,7 +71,7 @@ export default function Hero() {
         </motion.p>
 
         {/* PORTFOLIO stacked text — left/center */}
-        <div style={{
+        <div className="hero-title-container" style={{
           position: 'absolute',
           left: '50%', top: '50%',
           transform: 'translate(-40%, -50%)',
@@ -81,6 +82,7 @@ export default function Hero() {
         }}>
           {portfolioLayers.map((layer, i) => (
             <motion.div
+              className="hero-title-layer"
               key={i}
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: layer.opacity }}
@@ -102,6 +104,7 @@ export default function Hero() {
 
         {/* Portrait — 3D flip card */}
         <motion.div
+          className="hero-portrait"
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.8, duration: 0.9 }}
@@ -187,6 +190,7 @@ export default function Hero() {
 
         {/* Social links — right side */}
         <motion.div
+          className="hero-socials"
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 1.5, duration: 0.7 }}

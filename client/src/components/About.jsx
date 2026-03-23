@@ -8,7 +8,7 @@ export default function About() {
   const [flipped, setFlipped] = useState(true);
   return (
     <section id="about" className="section-light" style={{ padding: '6rem 2rem', position: 'relative' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '5rem', alignItems: 'center' }}>
+      <div className="responsive-grid-2" style={{ maxWidth: '1200px', margin: '0 auto', alignItems: 'center' }}>
 
         {/* Left: Bio */}
         <motion.div

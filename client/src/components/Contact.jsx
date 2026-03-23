@@ -79,7 +79,7 @@ export default function Contact() {
           transition={{ duration: 0.7, delay: 0.15 }}
           style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}
         >
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.2rem' }}>
+          <div className="responsive-grid-2" style={{ gap: '1.2rem' }}>
             <div>
               <label style={{ fontFamily: 'var(--font-body)', fontSize: '0.8rem', color: 'var(--color-star)', display: 'block', marginBottom: '0.4rem' }}>Name</label>
               <input className="cosmic-input" name="name" value={form.name} onChange={handleChange} placeholder="Your name" required />
