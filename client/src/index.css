@@ -1,0 +1,391 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+/* ========================================
+   COSMIC DESIGN TOKENS
+   ======================================== */
+:root {
+  --color-bg-dark: #080b1a;
+  --color-bg-mid: #0f1535;
+  --color-bg-light: #f0eef8;
+  --color-accent: #a855f7;
+  --color-accent-2: #6366f1;
+  --color-glow: #c084fc;
+  --color-text-dark: #1a1033;
+  --color-text-light: #e2d9f3;
+  --color-star: #b8aee8;
+
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Syne', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* ========================================
+   BASE RESET & GLOBAL STYLES
+   ======================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-light);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg-dark); }
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--color-glow); }
+
+/* ========================================
+   TYPOGRAPHY
+   ======================================== */
+.font-display { font-family: var(--font-display); }
+.font-body    { font-family: var(--font-body); }
+.font-mono    { font-family: var(--font-mono); }
+
+/* ========================================
+   STARFIELD BACKGROUND
+   ======================================== */
+.starfield {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle var(--dur, 3s) ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  0%   { opacity: var(--min-op, 0.1); transform: scale(1); }
+  100% { opacity: var(--max-op, 0.8); transform: scale(1.5); }
+}
+
+@keyframes drift {
+  0%   { transform: translateY(0) translateX(0); }
+  50%  { transform: translateY(-8px) translateX(4px); }
+  100% { transform: translateY(0) translateX(0); }
+}
+
+/* ========================================
+   GHOST / DECORATIVE TEXT
+   ======================================== */
+.ghost-text {
+  font-family: var(--font-display);
+  -webkit-text-stroke: 1.5px var(--color-accent);
+  color: transparent;
+  pointer-events: none;
+  user-select: none;
+  line-height: 0.85;
+}
+
+.ghost-text-lavender {
+  font-family: var(--font-display);
+  -webkit-text-stroke: 1.5px rgba(168, 85, 247, 0.4);
+  color: transparent;
+  pointer-events: none;
+  user-select: none;
+  line-height: 0.85;
+}
+
+/* ========================================
+   SPARKLE GLYPH
+   ======================================== */
+.sparkle {
+  color: var(--color-accent);
+  display: inline-block;
+  animation: sparkle-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes sparkle-pulse {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+  50%       { transform: scale(1.3) rotate(15deg); opacity: 0.7; }
+}
+
+/* ========================================
+   SECTIONS
+   ======================================== */
+.section-dark  { background-color: var(--color-bg-dark); }
+.section-mid   { background-color: var(--color-bg-mid); }
+.section-light { background-color: var(--color-bg-light); color: var(--color-text-dark); }
+
+/* ========================================
+   PILL / TAG COMPONENTS
+   ======================================== */
+.pill {
+  display: inline-block;
+  padding: 0.3em 0.9em;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.pill-dark {
+  background: var(--color-bg-mid);
+  color: var(--color-glow);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.pill-accent {
+  background: var(--color-accent);
+  color: white;
+}
+
+/* ========================================
+   VIOLET TIMELINE
+   ======================================== */
+.timeline-line {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.timeline-line::before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 8px;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--color-accent), transparent);
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 0;
+  top: 6px;
+  color: var(--color-accent);
+  font-size: 0.7rem;
+}
+
+/* ========================================
+   GLASSMORPHISM (dark sections only)
+   ======================================== */
+.glass-card {
+  background: rgba(15, 21, 53, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  border-radius: 16px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.glass-card:hover {
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.3);
+  transform: translateY(-4px);
+}
+
+/* ========================================
+   GLOW EFFECTS
+   ======================================== */
+.glow-violet {
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+}
+
+.glow-violet-sm {
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+}
+
+.text-glow {
+  text-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
+}
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+.btn-violet {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6em 1.5em;
+  background: var(--color-accent);
+  color: white;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: none;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-violet:hover {
+  box-shadow: 0 0 28px rgba(168, 85, 247, 0.7);
+  transform: translateY(-2px);
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 18px rgba(168, 85, 247, 0.5); }
+  50%       { box-shadow: 0 0 35px rgba(168, 85, 247, 0.9); }
+}
+
+.btn-pulse { animation: pulse-glow 2s ease-in-out infinite; }
+
+.btn-outline-violet {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6em 1.5em;
+  background: transparent;
+  color: var(--color-accent);
+  border: 1.5px solid var(--color-accent);
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-outline-violet:hover {
+  background: var(--color-accent);
+  color: white;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+}
+
+/* ========================================
+   FORM INPUTS
+   ======================================== */
+.cosmic-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(15, 21, 53, 0.8);
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  border-radius: 8px;
+  color: var(--color-text-light);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+}
+
+.cosmic-input::placeholder { color: rgba(178, 174, 232, 0.4); }
+
+.cosmic-input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.2);
+}
+
+/* ========================================
+   CONTACT LINK BAR
+   ======================================== */
+.link-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6em 1.2em;
+  background: var(--color-accent-2);
+  color: white;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: opacity 0.3s;
+  width: fit-content;
+}
+
+.link-bar:hover { opacity: 0.85; }
+
+/* ========================================
+   SECTION HEADINGS
+   ======================================== */
+.section-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.section-heading-dark {
+  font-family: var(--font-display);
+  color: var(--color-text-dark);
+  line-height: 1.1;
+}
+
+.section-heading-light {
+  font-family: var(--font-display);
+  color: var(--color-text-light);
+  line-height: 1.1;
+}
+
+/* ========================================
+   PHOTO EFFECTS
+   ======================================== */
+.photo-cosmic {
+  position: relative;
+  display: inline-block;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.photo-cosmic::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(168, 85, 247, 0.2));
+  mix-blend-mode: color;
+  pointer-events: none;
+}
+
+.photo-cosmic:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.4);
+}
+
+/* ========================================
+   EXPERIENCE GRADIENT CARD
+   ======================================== */
+.exp-card {
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  border-radius: 16px;
+  color: white;
+  padding: 2rem;
+}
+
+/* ========================================
+   NAVBAR
+   ======================================== */
+.navbar-glass {
+  background: rgba(8, 11, 26, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(168, 85, 247, 0.1);
+}
+
+/* ========================================
+   SCROLL REVEAL UTILITY
+   ======================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
