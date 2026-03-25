@@ -421,31 +421,33 @@ body {
   
   /* Hero Mobile Adjustments */
   .hero-container {
-    padding-top: 140px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important; /* Align everything towards the left */
-    text-align: left !important;
+    padding-top: 0 !important;
+    display: block !important;
+    min-height: 80vh !important;
+    position: relative !important;
   }
   
   .hero-tagline {
-    position: relative !important;
-    left: 2rem !important;
-    top: auto !important;
-    margin: 1rem 0 0 0 !important;
-    max-width: 160px !important;
+    position: absolute !important;
+    left: 1.5rem !important;
+    top: 20% !important;
+    margin: 0 !important;
+    max-width: 150px !important;
     text-align: left !important;
-    font-size: 0.65rem !important;
+    font-size: 0.62rem !important;
+    z-index: 5 !important;
   }
   
   .hero-title-bg, .hero-title-fg {
     position: absolute !important;
     left: auto !important;
-    right: -10% !important; /* Anchor to the right side */
-    top: 38% !important;
+    right: -10% !important;
+    top: 40% !important;
     transform: translateY(-50%) !important;
-    width: auto !important;
-    white-space: nowrap !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
   }
   
   .hero-title-bg { z-index: 1 !important; }
@@ -458,27 +460,28 @@ body {
   }
   
   .hero-portrait {
-    position: relative !important;
-    left: -2rem !important; /* Pull slightly off-screen/left like the mockup */
-    top: auto !important;
-    margin: 2rem 0 3rem 0 !important;
-    width: clamp(240px, 70vw, 300px) !important;
+    position: absolute !important;
+    left: -10% !important;
+    top: 55% !important;
+    transform: translateY(-50%) !important;
+    margin: 0 !important;
+    width: 250px !important;
     z-index: 10 !important;
   }
   
   .hero-socials {
     position: absolute !important;
     right: 1.5rem !important;
-    top: 62% !important; /* Position below titles */
+    bottom: 5% !important;
+    top: auto !important;
     transform: none !important;
     flex-direction: column !important;
     align-items: flex-end !important;
-    gap: 0.5rem !important;
+    gap: 0.6rem !important;
     text-align: right !important;
     width: auto !important;
-    background: radial-gradient(circle at right, rgba(168,85,247,0.1), transparent 70%);
-    padding: 1rem;
-    border-radius: 20px;
+    background: none !important;
+    padding: 0 !important;
   }
   
   /* Timeline fixes */
