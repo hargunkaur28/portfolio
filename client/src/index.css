@@ -421,52 +421,64 @@ body {
   
   /* Hero Mobile Adjustments */
   .hero-container {
-    padding-top: 120px !important;
+    padding-top: 140px !important;
     display: flex !important;
     flex-direction: column !important;
-    align-items: center !important;
-    text-align: center !important;
+    align-items: flex-start !important; /* Align everything towards the left */
+    text-align: left !important;
   }
   
   .hero-tagline {
     position: relative !important;
-    left: auto !important;
+    left: 2rem !important;
     top: auto !important;
-    margin: 0 auto 2rem auto !important;
+    margin: 1rem 0 0 0 !important;
+    max-width: 160px !important;
+    text-align: left !important;
+    font-size: 0.65rem !important;
   }
   
-  .hero-title-container {
-    position: relative !important;
+  .hero-title-bg, .hero-title-fg {
+    position: absolute !important;
     left: auto !important;
-    top: auto !important;
-    transform: none !important;
-    margin-bottom: 0 !important; /* Let portrait overlap */
+    right: -10% !important; /* Anchor to the right side */
+    top: 38% !important;
+    transform: translateY(-50%) !important;
+    width: auto !important;
+    white-space: nowrap !important;
   }
+  
+  .hero-title-bg { z-index: 1 !important; }
+  .hero-title-fg { z-index: 20 !important; }
   
   .hero-title-layer {
-    font-size: clamp(3rem, 15vw, 5rem) !important;
+    font-size: clamp(2.8rem, 12vw, 4.5rem) !important;
+    text-align: right !important;
+    padding-right: 2rem !important;
   }
   
   .hero-portrait {
     position: relative !important;
-    left: auto !important;
+    left: -2rem !important; /* Pull slightly off-screen/left like the mockup */
     top: auto !important;
-    margin: -160px auto 3rem auto !important; /* Pulls portrait much higher to heavily overlap text */
+    margin: 2rem 0 3rem 0 !important;
+    width: clamp(240px, 70vw, 300px) !important;
     z-index: 10 !important;
   }
   
   .hero-socials {
-    position: relative !important;
-    right: auto !important;
-    top: auto !important;
+    position: absolute !important;
+    right: 1.5rem !important;
+    top: 62% !important; /* Position below titles */
     transform: none !important;
-    flex-direction: column !important; /* Stack neatly on narrow screens */
-    align-items: center !important;
-    margin-top: 1rem !important;
-    margin-bottom: 2rem !important;
-    width: 100% !important;
-    gap: 0.8rem !important;
-    text-align: center !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    gap: 0.5rem !important;
+    text-align: right !important;
+    width: auto !important;
+    background: radial-gradient(circle at right, rgba(168,85,247,0.1), transparent 70%);
+    padding: 1rem;
+    border-radius: 20px;
   }
   
   /* Timeline fixes */
