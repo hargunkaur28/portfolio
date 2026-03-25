@@ -5,38 +5,63 @@ import { ExternalLink, Code2 } from 'lucide-react';
 import TiltCard from './TiltCard';
 import { SplitText } from './SplitText';
 
-const CATEGORIES = ['All', 'Web App', 'Full Stack', 'AI/Chatbot'];
+const CATEGORIES = ['All', 'Full Stack', 'Web App', 'AI/Chatbot', 'Python/Security'];
 
 const PROJECTS = [
   {
     _id: '1',
+    title: 'Cloudlet Mini Drive',
+    category: 'Full Stack',
+    tags: ['MongoDB', 'Express.js', 'React.js', 'Node.js', 'Tailwind CSS', 'Cloudinary', 'JWT'],
+    description: 'Full-stack Google Drive clone with JWT authentication and drag-and-drop file uploads. Features a secure access control system allowing users to request/approve file permissions and an admin overview dashboard.',
+    githubUrl: 'https://github.com/hargunkaur28/Cloudlet_MD', // Using your GitHub
+    liveUrl: 'https://cloudlet-md.vercel.app/',
+    year: 'March 2026',
+    image: '/proj-cloudlet.png',
+  },
+  {
+    _id: '2',
     title: 'Student Dropout Analysis',
     category: 'Full Stack',
     tags: ['MongoDB', 'Express.js', 'React.js', 'Node.js', 'Chart.js', 'JWT', 'Nodemailer', 'Twilio API'],
     description: 'Full-stack platform evaluating student attrition risks by correlating academic performance, attendance patterns, and socio-economic factors. Features an interactive dashboard with Chart.js for real-time trend analysis.',
-    githubUrl: 'https://github.com/Harleen3108/Student-analysis', // Add specific repo URL
+    githubUrl: 'https://github.com/Harleen3108/Student-analysis',
     liveUrl: null,
     year: 'Dec 2025',
+    image: '/proj-dropout.png',
   },
   {
-    _id: '2',
+    _id: '3',
     title: 'TrackWise',
     category: 'Web App',
     tags: ['HTML', 'CSS', 'Tailwind CSS', 'JavaScript', 'PHP', 'SQL', 'Leaflet.js'],
     description: 'Railway rake scheduling & forecasting system that predicts delays using historical patterns and real-time operational data. Features live train tracking and route visualization with Leaflet.js.',
     githubUrl: 'https://github.com/hargunkaur28/Trackwise',
-    liveUrl: 'https://track-wise-train-scheduling.vercel.app/', // Add your live link here
+    liveUrl: 'https://track-wise-train-scheduling.vercel.app/',
     year: 'April 2025',
+    image: '/proj-trackwise.png',
   },
   {
-    _id: '3',
+    _id: '4',
     title: 'Pairfect',
     category: 'AI/Chatbot',
     tags: ['JavaScript', 'HTML', 'CSS', 'Spoonacular API'],
     description: 'Personality-based food pairing chatbot that maps user personality traits and flavor preferences to personalized meal suggestions. Integrates Spoonacular API for real-time recipe retrieval.',
-    githubUrl: 'https://github.com/hargunkaur28/Food_pairing_chatbot', // Add specific repo URL
-    liveUrl: null,
+    githubUrl: 'https://github.com/hargunkaur28/Food_pairing_chatbot',
+    liveUrl: 'https://food-pairing-chatbot.vercel.app/',
     year: 'March 2025',
+    image: '/proj-pairfect.png',
+  },
+  {
+    _id: '5',
+    title: 'Secure File Management',
+    category: 'Python/Security',
+    tags: ['Python', 'Tkinter', 'Cryptography (AES)', 'Fernet', 'PyInstaller'],
+    description: 'AES-encrypted file management system built with Python. Features key generation, secure backup/restore, and a Tkinter-based GUI to prevent unauthorized access to sensitive local storage.',
+    githubUrl: 'https://github.com/hargunkaur28/Secure-File-Management-System', // Assumed naming
+    liveUrl: null,
+    year: 'Feb 2025',
+    image: '/proj-securefile.png',
   },
 ];
 
@@ -44,6 +69,7 @@ const categoryAccent = {
   'Full Stack': '#a855f7',
   'Web App': '#6366f1',
   'AI/Chatbot': '#c084fc',
+  'Python/Security': '#22d3ee',
 };
 
 export default function Projects() {
@@ -106,15 +132,28 @@ export default function Projects() {
                 transition={{ duration: 0.4, delay: i * 0.08 }}
                 style={{ padding: '0', overflow: 'hidden' }}
               >
-                <TiltCard style={{ height: '100%', borderRadius: 'inherit' }}>
-                  {/* Color band top */}
+                <TiltCard style={{ height: '100%', borderRadius: 'inherit', display: 'flex', flexDirection: 'column' }}>
+                  {/* Card Image Banner */}
                   <div style={{
-                    height: '5px',
-                    borderRadius: '16px 16px 0 0',
-                    background: `linear-gradient(to right, ${categoryAccent[project.category] || '#a855f7'}, rgba(168,85,247,0.25))`,
-                  }} />
+                    width: '100%', height: '170px',
+                    position: 'relative', overflow: 'hidden',
+                    background: 'rgba(26,16,51,0.5)',
+                    borderBottom: `2px solid ${categoryAccent[project.category] || '#a855f7'}`
+                  }}>
+                    <motion.img
+                      src={project.image}
+                      alt={project.title}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.9 }}
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.4 }}
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.parentElement.innerHTML += `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--color-star);font-family:var(--font-mono);font-size:0.75rem;padding:1rem;text-align:center;">Add ${project.image} in public/</div>`;
+                      }}
+                    />
+                  </div>
 
-                  <div style={{ padding: '1.8rem', display: 'flex', flexDirection: 'column', height: 'calc(100% - 5px)' }}>
+                  <div style={{ padding: '1.8rem', display: 'flex', flexDirection: 'column', flex: 1 }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.9rem' }}>
                       <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.68rem', color: categoryAccent[project.category] || 'var(--color-accent)', letterSpacing: '0.1em' }}>
                         {project.category}

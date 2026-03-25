@@ -20,12 +20,13 @@ const achievements = [
   },
 ];
 
-const training = {
-  title: 'DSA Training Program',
-  org: 'Lovely Professional University',
-  duration: 'Jun 2025 – Jul 2025',
-  stack: 'C++',
-  detail: 'Intensive DSA program taught by industry professional Manit Saharan. Solved structured problem sets mapped to real-world engineering workflows.',
+const experience = {
+  title: 'Web Developer Intern',
+  org: 'Avani Enterprises',
+  url: 'https://www.avanienterprises.in/',
+  duration: 'Mar 2026 – Present',
+  stack: 'React.js, Node.js, MongoDB, Express.js, Tailwind CSS',
+  detail: 'Contributing to the full-lifecycle design, development, and deployment of dynamic web applications using React.js, Node.js, and MongoDB. Collaborating closely with UI/UX designers and project managers to translate requirements into responsive, cross-browser compatible interfaces. Responsible for troubleshooting technical issues, optimizing application performance, and writing clean, structured, reusable code following strict version control standards. Actively participating in code reviews, testing, and team sprint meetings to ensure high-quality software delivery.',
 };
 
 export default function Activities() {
@@ -58,16 +59,16 @@ export default function Activities() {
           </div>
         </motion.div>
 
-        {/* Training */}
+        {/* Experience */}
         <motion.div
           initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.15 }}>
 
-          <p className="section-eyebrow" style={{ marginBottom: '0.5rem', color: 'var(--color-accent)' }}>Industry Training</p>
+          <p className="section-eyebrow" style={{ marginBottom: '0.5rem', color: 'var(--color-accent)' }}>Professional Profile</p>
           <h2 style={{ fontFamily: 'var(--font-display)', color: 'var(--color-text-dark)', fontSize: '2.8rem', fontWeight: 700, marginBottom: '2rem' }}>
-            <SplitText text="Training" delay={0.05} />
+            <SplitText text="Experience" delay={0.05} />
           </h2>
 
-          {/* Training card */}
+          {/* Experience card */}
           <div style={{
             background: 'white',
             borderRadius: '16px',
@@ -80,20 +81,27 @@ export default function Activities() {
             <div style={{ padding: '1.6rem' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.5rem' }}>
                 <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.68rem', color: 'var(--color-accent-2)', letterSpacing: '0.08em' }}>
-                  {training.stack}
+                  {experience.stack}
                 </span>
                 <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.68rem', color: '#a09dbf' }}>
-                  {training.duration}
+                  {experience.duration}
                 </span>
               </div>
               <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 700, color: '#1a1033', marginBottom: '0.3rem' }}>
-                {training.title}
+                {experience.title}
               </h3>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.82rem', color: 'var(--color-accent)', fontWeight: 600, marginBottom: '0.8rem' }}>
-                {training.org}
-              </p>
+              <a 
+                href={experience.url}
+                target="_blank"
+                rel="noreferrer"
+                style={{ display: 'inline-block', fontFamily: 'var(--font-body)', fontSize: '0.82rem', color: 'var(--color-accent)', fontWeight: 600, marginBottom: '0.8rem', textDecoration: 'none', transition: 'color 0.2s' }}
+                onMouseEnter={e => e.currentTarget.style.color = 'var(--color-glow)'}
+                onMouseLeave={e => e.currentTarget.style.color = 'var(--color-accent)'}
+              >
+                {experience.org} ↗
+              </a>
               <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.84rem', color: '#3d3456', lineHeight: 1.7 }}>
-                {training.detail}
+                {experience.detail}
               </p>
             </div>
           </div>

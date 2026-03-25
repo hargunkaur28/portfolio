@@ -485,4 +485,16 @@ body {
     align-items: flex-start !important;
     gap: 1.2rem !important;
   }
+  
+  .cert-thumb {
+    width: 100% !important;
+    height: 180px !important;
+  }
+  
+  .cert-content {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+    gap: 1.2rem !important;
+  }
 }

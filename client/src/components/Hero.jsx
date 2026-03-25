@@ -71,19 +71,21 @@ export default function Hero() {
         </motion.p>
 
         {/* PORTFOLIO stacked text — left/center */}
-        <div className="hero-title-container" style={{
+        {/* Background Title Layers (Outlines) */}
+        <div className="hero-title-bg" style={{
           position: 'absolute',
           left: '50%', top: '50%',
           transform: 'translate(-40%, -50%)',
           display: 'flex',
           flexDirection: 'column',
           userSelect: 'none',
-          zIndex: 0,
+          zIndex: 1, // Stays behind the portrait
+          pointerEvents: 'none',
         }}>
           {portfolioLayers.map((layer, i) => (
             <motion.div
-              className="hero-title-layer"
-              key={i}
+              className={`hero-title-layer ${i === 0 ? 'hidden-layer' : ''}`}
+              key={`bg-${i}`}
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: layer.opacity }}
               transition={{ delay: 0.5 + i * 0.15, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
@@ -95,6 +97,41 @@ export default function Hero() {
                 letterSpacing: '-0.02em',
                 color: layer.outlined ? 'transparent' : 'var(--color-text-light)',
                 WebkitTextStroke: layer.outlined ? '1.5px var(--color-accent)' : 'none',
+                visibility: i === 0 ? 'hidden' : 'visible', // Hide the solid one here
+              }}
+            >
+              PORTFOLIO
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Foreground Title Layer (Solid) */}
+        <div className="hero-title-fg" style={{
+          position: 'absolute',
+          left: '50%', top: '50%',
+          transform: 'translate(-40%, -50%)',
+          display: 'flex',
+          flexDirection: 'column',
+          userSelect: 'none',
+          zIndex: 20, // Forces overlap over portrait
+          pointerEvents: 'none',
+        }}>
+          {portfolioLayers.map((layer, i) => (
+            <motion.div
+              className={`hero-title-layer ${i !== 0 ? 'hidden-layer' : ''}`}
+              key={`fg-${i}`}
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: layer.opacity }}
+              transition={{ delay: 0.5 + i * 0.15, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(4rem, 10vw, 9rem)',
+                fontWeight: 700,
+                lineHeight: 0.85,
+                letterSpacing: '-0.02em',
+                color: layer.outlined ? 'transparent' : 'var(--color-text-light)',
+                WebkitTextStroke: layer.outlined ? '1.5px var(--color-accent)' : 'none',
+                visibility: i !== 0 ? 'hidden' : 'visible', // Hide the outlines here
               }}
             >
               PORTFOLIO
@@ -113,7 +150,7 @@ export default function Hero() {
             left: '28%',
             top: '52px',
             width: 'clamp(220px, 28vw, 360px)',
-            zIndex: 2,
+            zIndex: 10,
             perspective: '1200px',
             cursor: 'pointer',
           }}

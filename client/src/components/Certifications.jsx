@@ -4,24 +4,35 @@ import { SplitText } from './SplitText';
 const certifications = [
   {
     id: 1,
+    name: 'The Science of Well-Being',
+    issuer: 'Coursera — Yale University',
+    year: 'Mar 2026',
+    verifyUrl: 'https://coursera.org/verify/KN81CZHVDOI2',
+    image: '/cert-wellbeing.png',
+  },
+  {
+    id: 2,
     name: 'Privacy and Security in Social Media',
     issuer: 'NPTEL',
     year: 'Oct 2025',
     verifyUrl: 'https://archive.nptel.ac.in/noc/Ecertificate/?q=NPTEL25CS117S135870176010512483', // Add your link here
+    image: '/cert-privacy.png',
   },
   {
-    id: 2,
+    id: 3,
     name: 'Digital Systems: From Logic Gates to Processors',
     issuer: 'Coursera — Universitat Autònoma de Barcelona',
     year: 'Nov 2024',
     verifyUrl: 'https://www.coursera.org/verify/77OPMQC6WGEN', // Add your link here
+    image: '/cert-digital.png',
   },
   {
-    id: 3,
+    id: 4,
     name: 'The Bits and Bytes of Computer Networking',
     issuer: 'Coursera — Google',
     year: 'Oct 2024',
     verifyUrl: 'https://www.coursera.org/verify/PIJ64Y1R8VLH', // Add your link here
+    image: '/cert-network.png',
   },
 ];
 
@@ -87,63 +98,81 @@ export default function Certifications() {
               onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(168,85,247,0.45)'; e.currentTarget.style.boxShadow = '0 4px 25px rgba(168,85,247,0.15)'; }}
               onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(168,85,247,0.15)'; e.currentTarget.style.boxShadow = '0 2px 20px rgba(168,85,247,0.06)'; }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem' }}>
-                <div style={{
-                  width: '44px', height: '44px', flexShrink: 0,
-                  background: 'linear-gradient(135deg, #6366f1, #a855f7)',
-                  borderRadius: '10px',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontFamily: 'var(--font-mono)', color: 'white', fontSize: '0.85rem', fontWeight: 700,
-                }}>
-                  {String(i + 1).padStart(2, '0')}
-                </div>
-                <div>
-                  <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.97rem', fontWeight: 700, color: 'var(--color-text-dark)', marginBottom: '0.15rem' }}>
-                    {cert.name}
-                  </p>
-                  <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.8rem', color: '#5a4d7a' }}>
-                    {cert.issuer}
-                  </p>
-                </div>
+              <div className="cert-thumb" style={{
+                width: '180px', height: '120px', flexShrink: 0,
+                borderRadius: '8px', overflow: 'hidden',
+                background: '#f0eef8', border: '1px solid rgba(168,85,247,0.1)'
+              }}>
+                <img
+                  src={cert.image}
+                  alt={cert.name}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.parentElement.innerHTML += `<div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--color-accent);font-family:var(--font-mono);font-size:0.65rem;text-align:center;padding:0.5rem;background:rgba(168,85,247,0.05)"><span style="font-size:1.5rem;margin-bottom:0.2rem">🖼️</span><span>add ${cert.image}</span></div>`;
+                  }}
+                />
               </div>
 
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexShrink: 0 }}>
-                <span style={{
-                  fontFamily: 'var(--font-mono)', fontSize: '0.72rem',
-                  color: 'var(--color-accent)', background: 'rgba(168,85,247,0.08)',
-                  padding: '0.25em 0.7em', borderRadius: '999px',
-                  border: '1px solid rgba(168,85,247,0.2)',
-                  whiteSpace: 'nowrap',
-                }}>
-                  {cert.year}
-                </span>
-                <a
-                  href={cert.verifyUrl}
-                  target={cert.verifyUrl !== '#' ? '_blank' : undefined}
-                  rel="noreferrer"
-                  style={{
+              <div className="cert-content" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flex: 1, gap: '1.5rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem' }}>
+                  <div style={{
+                    width: '44px', height: '44px', flexShrink: 0,
+                    background: 'linear-gradient(135deg, #6366f1, #a855f7)',
+                    borderRadius: '10px',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    fontFamily: 'var(--font-mono)', color: 'white', fontSize: '0.85rem', fontWeight: 700,
+                  }}>
+                    {String(i + 1).padStart(2, '0')}
+                  </div>
+                  <div>
+                    <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.97rem', fontWeight: 700, color: 'var(--color-text-dark)', marginBottom: '0.15rem' }}>
+                      {cert.name}
+                    </p>
+                    <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.8rem', color: '#5a4d7a' }}>
+                      {cert.issuer}
+                    </p>
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexShrink: 0 }}>
+                  <span style={{
                     fontFamily: 'var(--font-mono)', fontSize: '0.72rem',
-                    color: cert.verifyUrl === '#' ? 'rgba(90,77,122,0.35)' : 'var(--color-accent-2)',
-                    textDecoration: 'none',
-                    cursor: cert.verifyUrl === '#' ? 'not-allowed' : 'pointer',
+                    color: 'var(--color-accent)', background: 'rgba(168,85,247,0.08)',
+                    padding: '0.25em 0.7em', borderRadius: '999px',
+                    border: '1px solid rgba(168,85,247,0.2)',
                     whiteSpace: 'nowrap',
-                    transition: 'all 0.2s ease',
-                  }}
-                  onMouseEnter={e => {
-                    if (cert.verifyUrl !== '#') {
-                      e.currentTarget.style.color = 'var(--color-accent)';
-                      e.currentTarget.style.transform = 'translateY(-1px)';
-                    }
-                  }}
-                  onMouseLeave={e => {
-                    if (cert.verifyUrl !== '#') {
-                      e.currentTarget.style.color = 'var(--color-accent-2)';
-                      e.currentTarget.style.transform = 'translateY(0)';
-                    }
-                  }}
-                >
-                  {cert.verifyUrl === '#' ? 'add link' : 'Verify ↗'}
-                </a>
+                  }}>
+                    {cert.year}
+                  </span>
+                  <a
+                    href={cert.verifyUrl}
+                    target={cert.verifyUrl !== '#' ? '_blank' : undefined}
+                    rel="noreferrer"
+                    style={{
+                      fontFamily: 'var(--font-mono)', fontSize: '0.72rem',
+                      color: cert.verifyUrl === '#' ? 'rgba(90,77,122,0.35)' : 'var(--color-accent-2)',
+                      textDecoration: 'none',
+                      cursor: cert.verifyUrl === '#' ? 'not-allowed' : 'pointer',
+                      whiteSpace: 'nowrap',
+                      transition: 'all 0.2s ease',
+                    }}
+                    onMouseEnter={e => {
+                      if (cert.verifyUrl !== '#') {
+                        e.currentTarget.style.color = 'var(--color-accent)';
+                        e.currentTarget.style.transform = 'translateY(-1px)';
+                      }
+                    }}
+                    onMouseLeave={e => {
+                      if (cert.verifyUrl !== '#') {
+                        e.currentTarget.style.color = 'var(--color-accent-2)';
+                        e.currentTarget.style.transform = 'translateY(0)';
+                      }
+                    }}
+                  >
+                    {cert.verifyUrl === '#' ? 'add link' : 'Verify ↗'}
+                  </a>
+                </div>
               </div>
             </motion.div>
           ))}
