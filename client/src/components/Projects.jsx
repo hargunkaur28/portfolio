@@ -26,7 +26,7 @@ const PROJECTS = [
     tags: ['MongoDB', 'Express.js', 'React.js', 'Node.js', 'Chart.js', 'JWT', 'Nodemailer', 'Twilio API'],
     description: 'Full-stack platform evaluating student attrition risks by correlating academic performance, attendance patterns, and socio-economic factors. Features an interactive dashboard with Chart.js for real-time trend analysis.',
     githubUrl: 'https://github.com/Harleen3108/Student-analysis',
-    liveUrl: null,
+    liveUrl: 'https://student-dropout-analysis-mauve.vercel.app/',
     year: 'Dec 2025',
     image: '/proj-dropout.png',
   },
