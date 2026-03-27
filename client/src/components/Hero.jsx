@@ -149,7 +149,7 @@ export default function Hero() {
             position: 'absolute',
             left: '28%',
             top: '52px',
-            width: 'clamp(220px, 28vw, 360px)',
+            width: 'clamp(200px, 25vw, 310px)',
             zIndex: 10,
             perspective: '1200px',
             cursor: 'pointer',
